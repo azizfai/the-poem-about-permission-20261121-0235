@@ -41,6 +41,10 @@ if len(POEM) == 0 or len(POEM) > 280:
 if POEM.strip() == "":
     print("invalid poem: only whitespace", file=sys.stderr)
     sys.exit(1)
+for line in POEM.split("\n"):
+    if line != line.rstrip():
+        print("invalid poem: trailing whitespace", file=sys.stderr)
+        sys.exit(1)
 if poem_bytes.decode("utf-8") != POEM:
     print("invalid poem: not valid UTF-8", file=sys.stderr)
     sys.exit(1)
